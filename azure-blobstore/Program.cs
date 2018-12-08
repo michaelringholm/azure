@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http.Headers;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -15,8 +17,13 @@ namespace com.opusmagus.cloud.blobs
         static void Main(string[] args)
         {
             Console.WriteLine("Azure blob store sample started...");
-            //blobContainerConnString = ConfigurationManager.AppSettings["StorageConnectionString"].ToString();
-            blobContainerConnString = "DefaultEndpointsProtocol=https;AccountName=cc0v20dev0sa;AccountKey=9pv60XZrKDieQFHnSWh/r8aEzIHLfKElLT/lT4DoHvvpBcnhYIpXP57M/1euvUKfF9DyWgZ5j7E2ac7DMkGt7Q==";
+
+            var diContainer = new ServiceCollection();
+            //diContainer.AddSingleton<IConfiguration, ConfigurationBuilder>();
+            var diProvider = diContainer.BuildServiceProvider();
+            //var openDocument = diProvider.GetService<IOpenDocument>();
+            IConfiguration config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.dev.json").Build();
+            blobContainerConnString = config.GetSection("blobContainerConnString").Value;
             blobContainerName = "sample-blob-container";
             //demo1();
             //demo2();
