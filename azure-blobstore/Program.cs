@@ -6,20 +6,36 @@ using System.Net.Http.Headers;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
-namespace azure_blobstore
+namespace com.opusmagus.cloud.blobs
 {
     class Program
     {
         private static string blobContainerConnString = null;
+        private static string blobContainerName = null;
         static void Main(string[] args)
         {
             Console.WriteLine("Azure blob store sample started...");
             //blobContainerConnString = ConfigurationManager.AppSettings["StorageConnectionString"].ToString();
-            demo1();
-            demo2();
-            demo3();
+            blobContainerConnString = "DefaultEndpointsProtocol=https;AccountName=cc0v20dev0sa;AccountKey=9pv60XZrKDieQFHnSWh/r8aEzIHLfKElLT/lT4DoHvvpBcnhYIpXP57M/1euvUKfF9DyWgZ5j7E2ac7DMkGt7Q==";
+            blobContainerName = "sample-blob-container";
+            //demo1();
+            //demo2();
+            //demo3();
+            demo4();
             Console.WriteLine("Azure blob store sample ended!");
         }
+
+        private static void demo4()
+        {
+            IBlobService blobService = new AzureBlobService();
+            var blobItems = blobService.getBlobItems(blobContainerConnString, blobContainerName, 10);
+            var blobItemEnumerator = blobItems.GetEnumerator();
+            blobItemEnumerator.MoveNext();
+            var blobName = ((CloudBlockBlob)blobItemEnumerator.Current).Name;
+            var blobContents = blobService.getBlobContents(blobContainerConnString, blobContainerName, blobName);
+            File.WriteAllBytes($"./local/{Guid.NewGuid()}.docx", blobContents);
+        }
+
         private static void demo1()
         {
             // Retrieve storage account information from connection string
