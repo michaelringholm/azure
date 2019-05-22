@@ -16,7 +16,8 @@ namespace com.opusmagus.api
         public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
-
+            log.LogInformation(System.Environment.StackTrace);
+            Console.WriteLine("test");
             string name = req.Query["name"];
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
