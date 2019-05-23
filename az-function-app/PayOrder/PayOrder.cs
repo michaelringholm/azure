@@ -13,20 +13,18 @@ namespace com.opusmagus.api
     public static class PayOrder
     {
         [FunctionName("PayOrder")]
-        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
+        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req, ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("C# HTTP trigger PayOrder called!");
             log.LogInformation(System.Environment.StackTrace);
-            Console.WriteLine("test");
-            string name = req.Query["name"];
+            
+            string jsonRequestData = await new StreamReader(req.Body).ReadToEndAsync();
+            dynamic requestData = JsonConvert.DeserializeObject(jsonRequestData);
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
-
-            return name != null
-                ? (ActionResult)new OkObjectResult($"Hello, {name}")
-                : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+            if(requestData?.orderId != null)
+                return (ActionResult)new OkObjectResult($"Started payment for order id {requestData.orderId}");
+            else
+                return new BadRequestObjectResult("Please pass an orderId in the request body");
         }
     }
 }
