@@ -7,15 +7,18 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using com.opusmagus.bl;
 
 namespace com.opusmagus.api
 {
     public class PayOrder
     {
-        public PayOrder() {
+        private ProcessOrderCommand command;
 
+        public PayOrder(ProcessOrderCommand command) {
+            this.command = command;
         }
-        
+
         [FunctionName("PayOrder")]
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
         {
@@ -25,8 +28,10 @@ namespace com.opusmagus.api
             string jsonRequestData = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic requestData = JsonConvert.DeserializeObject(jsonRequestData);
 
-            if(requestData?.orderId != null)
+            if(requestData?.orderId != null) {
+                command.Execute(requestData);
                 return (ActionResult)new OkObjectResult($"Started payment for order id {requestData.orderId}");
+            }
             else
                 return new BadRequestObjectResult("Please pass an orderId in the request body");
         }
