@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 
 namespace com.opusmagus.logging
 {
-    public class OpusMagusLogger : ILoggerProvider
+    public class OpusMagusLoggerProvider : ILoggerProvider
     {
         public ILogger CreateLogger(string categoryName)
         {
