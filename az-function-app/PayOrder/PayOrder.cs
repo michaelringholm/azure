@@ -12,6 +12,10 @@ namespace com.opusmagus.api
 {
     public class PayOrder
     {
+        public PayOrder() {
+
+        }
+        
         [FunctionName("PayOrder")]
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
         {
