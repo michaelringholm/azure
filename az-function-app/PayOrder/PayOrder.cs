@@ -10,10 +10,10 @@ using Newtonsoft.Json;
 
 namespace com.opusmagus.api
 {
-    public static class PayOrder
+    public class PayOrder
     {
         [FunctionName("PayOrder")]
-        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
+        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
             log.LogInformation(System.Environment.StackTrace);
