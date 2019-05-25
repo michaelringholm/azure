@@ -13,7 +13,6 @@ namespace com.opusmagus.api
     public class PayOrder
     {
         [FunctionName("PayOrder")]
-
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
         {
             log.LogInformation("C# HTTP trigger PayOrder called!");
