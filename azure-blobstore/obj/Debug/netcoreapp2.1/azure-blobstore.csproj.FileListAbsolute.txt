@@ -1,0 +1,11 @@
+C:\data\github\azure\azure-blobstore\bin\Debug\netcoreapp2.1\azure-blobstore.deps.json
+C:\data\github\azure\azure-blobstore\bin\Debug\netcoreapp2.1\azure-blobstore.runtimeconfig.json
+C:\data\github\azure\azure-blobstore\bin\Debug\netcoreapp2.1\azure-blobstore.runtimeconfig.dev.json
+C:\data\github\azure\azure-blobstore\bin\Debug\netcoreapp2.1\azure-blobstore.dll
+C:\data\github\azure\azure-blobstore\bin\Debug\netcoreapp2.1\azure-blobstore.pdb
+C:\data\github\azure\azure-blobstore\obj\Debug\netcoreapp2.1\azure-blobstore.csprojAssemblyReference.cache
+C:\data\github\azure\azure-blobstore\obj\Debug\netcoreapp2.1\azure-blobstore.csproj.CoreCompileInputs.cache
+C:\data\github\azure\azure-blobstore\obj\Debug\netcoreapp2.1\azure-blobstore.AssemblyInfoInputs.cache
+C:\data\github\azure\azure-blobstore\obj\Debug\netcoreapp2.1\azure-blobstore.AssemblyInfo.cs
+C:\data\github\azure\azure-blobstore\obj\Debug\netcoreapp2.1\azure-blobstore.dll
+C:\data\github\azure\azure-blobstore\obj\Debug\netcoreapp2.1\azure-blobstore.pdb
