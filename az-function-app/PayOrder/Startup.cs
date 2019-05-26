@@ -12,7 +12,7 @@ namespace com.opusmagus.api
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            //builder.Services.BuildServiceProvider().GetService<ILogger>();
+            builder.Services.AddSingleton<ILogger, OpusMagusLogger>();
             builder.Services.AddSingleton<ILoggerProvider, OpusMagusLoggerProvider>();
             builder.Services.AddSingleton<ProcessOrderCommand, ProcessOrderCommand>();
         }

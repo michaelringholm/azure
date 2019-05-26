@@ -14,9 +14,11 @@ namespace com.opusmagus.api
     public class ProcessOrder
     {
         private ProcessOrderCommand command;
+        private ILogger logger;
 
-        public ProcessOrder(ProcessOrderCommand command) {
+        public ProcessOrder(ProcessOrderCommand command, ILogger logger) {
             this.command = command;
+            this.logger = logger;
         }
 
         [FunctionName("ProcessOrder")]
