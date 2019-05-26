@@ -6,7 +6,7 @@ namespace com.opusmagus.logging
     {
         public ILogger CreateLogger(string categoryName)
         {
-            throw new System.NotImplementedException();
+            return new OpusMagusLogger();
         }
 
         public void Dispose()

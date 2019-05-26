@@ -11,18 +11,18 @@ using com.opusmagus.bl;
 
 namespace com.opusmagus.api
 {
-    public class PayOrder
+    public class ProcessOrder
     {
         private ProcessOrderCommand command;
 
-        public PayOrder(ProcessOrderCommand command) {
+        public ProcessOrder(ProcessOrderCommand command) {
             this.command = command;
         }
 
-        [FunctionName("PayOrder")]
+        [FunctionName("ProcessOrder")]
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
         {
-            log.LogInformation("C# HTTP trigger PayOrder called!");
+            log.LogInformation("C# HTTP trigger ProcessOrder called!");
             log.LogInformation(System.Environment.StackTrace);
             
             string jsonRequestData = await new StreamReader(req.Body).ReadToEndAsync();
@@ -30,7 +30,7 @@ namespace com.opusmagus.api
 
             if(requestData?.orderId != null) {
                 command.Execute(requestData);
-                return (ActionResult)new OkObjectResult($"Started payment for order id {requestData.orderId}");
+                return (ActionResult)new OkObjectResult($"Started processing order with id {requestData.orderId}");
             }
             else
                 return new BadRequestObjectResult("Please pass an orderId in the request body");
