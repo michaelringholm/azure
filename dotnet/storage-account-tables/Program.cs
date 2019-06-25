@@ -17,11 +17,11 @@ namespace storage_account_tables
         {
             Console.WriteLine("Started");
             LoadAppSettings();
-            var tableName = "invoice";
-            IInvoiceDAO invoiceDAO = new InvoiceDAO(configuration); // Use DI
-            invoiceDAO.TruncateTable();
+            //var tableName = "invoice";
+            IInvoiceDAO invoiceDAO = new InvoiceDAO(configuration); // Use DI            
             InsertSampleData(invoiceDAO);
             var sampleData = RetrieveSampleDate(invoiceDAO);
+            invoiceDAO.Drop();
             Console.WriteLine("Ended!");
         }
 
@@ -32,7 +32,7 @@ namespace storage_account_tables
 
         private static void InsertSampleData(IInvoiceDAO invoiceDAO)
         {
-            invoiceDAO.Insert(null);
+            invoiceDAO.InsertOrMerge(new InvoiceDTO{ InvoiceID = Guid.NewGuid(), InvoiceNumber = 100200, InvoiceYear = 2019, InvoiceMonth = 10 });
         }
 
         public static void LoadAppSettings()

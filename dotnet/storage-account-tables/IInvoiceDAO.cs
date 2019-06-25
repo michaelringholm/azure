@@ -4,8 +4,8 @@ namespace storage_account_tables
 {
     public interface IInvoiceDAO
     {
-        void TruncateTable();
-        void Insert(InvoiceDTO invoice);
+        void Drop();
+        void InsertOrMerge(InvoiceDTO invoice);
         List<InvoiceDTO> GetAll();
     }
 }
