@@ -8,12 +8,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using com.opusmagus.bl;
+using System.Net.Http;
 
 namespace com.opusmagus.api
-{
-    [FunctionName("SimulateManagerApprovalHttpTrigger")]
+{    
     public class SimulateManagerApprovalHttpTrigger
     {
+        [FunctionName("SimulateManagerApprovalHttpTrigger")]        
         public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, DurableOrchestrationClient starter, ILogger log)
         {
             dynamic eventData = await req.Content.ReadAsAsync<object>();

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using com.opusmagus.bl;
+using System.Collections.Generic;
 
 namespace com.opusmagus.api
 {
@@ -17,6 +18,7 @@ namespace com.opusmagus.api
         {
         }
 
+        [FunctionName("ProcessOrderDurableOrchestrator")]
         public static async Task<List<string>> Run(DurableOrchestrationContext context)
         {
             var input = context.GetInput<SampleInput>();
@@ -24,7 +26,7 @@ namespace com.opusmagus.api
 
             context.SetCustomStatus("Starting payment activity");
             outputs.Add(await context.CallActivityAsync<string>("start-payment-activity", "A"));
-            if (input.OrderAmount == null) throw new Exception("OrderAmount was missing!");
+            //if (input.OrderAmount == null) throw new Exception("OrderAmount was missing!");
             if (input.OrderAmount > 100000)
             {
                 context.SetCustomStatus("Waiting for manager approval");

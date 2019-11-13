@@ -10,10 +10,10 @@ using Newtonsoft.Json;
 using com.opusmagus.bl;
 
 namespace com.opusmagus.api
-{
-    [FunctionName("StartPaymentActivity")]
+{    
     public class StartPaymentActivity
     {
+        [FunctionName("StartPaymentActivity")]
         public static string Run(string name)
         {
             System.Threading.Thread.Sleep(12000);
