@@ -1,0 +1,55 @@
+﻿@page
+@model IndexModel
+@section JavaScriptIncludes {
+    <script src="~/js/index.js"></script>
+    <script src="~/js/management.js"></script>
+}
+@section StylesheetIncludes {
+}
+
+<h1 i18n>Welcome to the Commentor Starter Project Web App</div>
+<h2>Cars</h2>
+<table class="table table-hover table-dark container">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Make</th>
+            <th scope="col">Model</th>
+        </tr>
+    </thead>
+    <tbody id="carBlade"></tbody>
+</table>
+
+<h2>Super Heroes</h2>
+<div class="container">
+    <div class="row table-row-header align-items-center">
+        <div class="col-2 table-cell">#</div>
+        <div class="col-5 table-cell">Name</div>
+        <div class="col-5 table-cell">City</div>
+    </div>
+    <div id="superHeroBlade" class="align-items-center">
+    </div>
+</div>
+<button id="processOrder" type="button" class="btn btn-primary" style="margin-top: 1rem;">Process Order</button>
+<button id="checkWebAPIHealth" type="button" class="btn btn-primary" style="margin-top: 1rem;">Check Web API Health</button>
+
+<!-- Templates -->
+<script type="text/x-handlebars-template" id="superHeroBladeTemplate">
+    {{#each superHeroes}}
+        <div class="text-center superHeroItem row" data-super-hero-id="{{Id}}">
+            <div class="col-2 table-cell">{{Id}}</div>
+            <div class="col-5 table-cell">{{Name}}</div>
+            <div class="col-5 table-cell">{{City}}</div>
+        </div>           
+    {{/each}}
+</script>
+
+<script type="text/x-handlebars-template" id="carBladeTemplate">
+{{#each cars}}    
+    <tr class="carItem" data-car-id="{{Id}}">
+        <td>{{Id}}</td>
+        <td>{{Make}}</td>
+        <td>{{Model}}</td>
+    </tr>                   
+{{/each}}
+</script>

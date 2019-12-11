@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>dk.commentor.starterproject.dal.azsql.test</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup Condition="Exists('appsettings.Development.json')">
+    <None Include="appsettings.Development.json" CopyToPublishDirectory="Always" />
+    <None Include="appsettings.Development.json" CopyToOutputDirectory="Always" />
+  </ItemGroup>  
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.1"/>
+    <PackageReference Include="Moq" Version="4.10.1"/>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1"/>
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\data-access-layer\data-access-layer.csproj"/>
+    <ProjectReference Include="..\az-sql-server-dal\az-sql-server-dal.csproj"/>
+    <ProjectReference Include="..\service-layer\service-layer.csproj"/>
+    <ProjectReference Include="..\data-transport-layer\data-transport-layer.csproj"/>
+    <ProjectReference Include="..\az-key-vault\az-key-vault.csproj"/>
+  </ItemGroup>
+</Project>

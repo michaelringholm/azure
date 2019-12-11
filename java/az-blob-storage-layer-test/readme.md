@@ -1,0 +1,5 @@
+# Set APSNET CORE ENV
+setx ASPNETCORE_ENVIRONMENT Development
+
+# Bash
+export ASPNETCORE_ENVIRONMENT=Development

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <RootNamespace>com.opusmagus.webapi</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Moq" Version="4.10.1" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.0.6" />
+    <PackageReference Include="SoapCore" Version="0.9.9.6"/>
+    <PackageReference Include="commentor-logger" Version="1.0.8-*" />
+    <PackageReference Include="commentor-logger-app-insights-extension" Version="1.0.8-*" />
+    <ProjectReference Include="..\az-blob-storage-layer\az-blob-storage-layer.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\business-layer\business-layer.csproj" />
+    <ProjectReference Include="..\data-transport-layer\data-transport-layer.csproj" />
+    <ProjectReference Include="..\open-erp-service\open-erp-service.csproj" />
+    <ProjectReference Include="..\paypal-service\paypal-service.csproj" />
+    <ProjectReference Include="..\docuware-service\docuware-service.csproj" />
+  </ItemGroup>
+</Project>
