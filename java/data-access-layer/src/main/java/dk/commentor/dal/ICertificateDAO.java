@@ -8,6 +8,6 @@ import dk.commentor.dtl.CertificateDTO;
 public interface ICertificateDAO
 {
     CompletableFuture<List<CertificateDTO>> GetCertificates() throws Exception;
-    CompletableFuture<Void> Store(CertificateDTO certificate);
-    CompletableFuture<CertificateDTO> Restore(String imoNumber);
+    CompletableFuture<Void> Store(CertificateDTO certificate) throws Exception;
+    CompletableFuture<CertificateDTO> Restore(String imoNumber) throws Exception;
 }

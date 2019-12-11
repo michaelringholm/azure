@@ -17,7 +17,7 @@ public class CaseWorkerBO
         this.documentService = documentService;
     }
 
-    public CompletableFuture<CertificateDTO> GetShipCertificate(String imoNumber)
+    public CompletableFuture<CertificateDTO> GetShipCertificate(String imoNumber) throws Exception
     {
         CompletableFuture<CertificateDTO> certificates = certificateDAO.Restore(imoNumber);
         return certificates;

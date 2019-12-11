@@ -24,7 +24,7 @@ import dk.commentor.sl.IOrderService;
 import dk.commentor.sl.IPaymentService;
 
 @Configuration
-@PropertySource({"classpath:application.properties"})
+@PropertySource({"file:src/main/resources/application.properties"})
 public class AppConfig {
     @Autowired Environment env;
 
@@ -43,7 +43,7 @@ public class AppConfig {
     }
 
     @Bean ICertificateDAO certificateDAO() throws Exception {
-        String blobContainerConnectionString = env.getProperty("BlobConnectionString");
+        String blobContainerConnectionString = env.getProperty("BlobStorageConnString");
         String blobName = env.getProperty("BlobName");
         return new AZBlobstoreCertificateDAO(logger(), blobContainerConnectionString, blobName);
     }

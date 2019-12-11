@@ -6,3 +6,4 @@ target
 settings.xml
 application.properties
 .factorypath
+application.properties.local

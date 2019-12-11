@@ -3,6 +3,7 @@ package dk.commentor.dal.blobstore;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -48,13 +49,20 @@ public class AZBlobstoreCertificateDAO implements ICertificateDAO {
         });*/
     }
 
-    public CompletableFuture<CertificateDTO> Restore(String imoNumber)
+    public CompletableFuture<CertificateDTO> Restore(String imoNumber) throws Exception
     {
-        //GetCertificates()).Where(c => c.IMONumber.Equals(imoNumber)).FirstOrDefault();
-        return null;
+    	return GetCertificates().thenApplyAsync( certs -> {
+    		try {
+    			return certs.get(0);
+    		}
+	        catch (Exception ex) {
+	            throw new CompletionException(ex);
+	        }
+		});
+    		//).Where(c => c.IMONumber.Equals(imoNumber)).FirstOrDefault();    	
     }
 
-    public CompletableFuture Store(CertificateDTO certificate)
+    public CompletableFuture Store(CertificateDTO certificate) throws Exception
     {
         /*var certificates = GetCertificates().get();
         var existingCertificate = certificates.Where(c => c.IMONumber.Equals(certificate.IMONumber)).FirstOrDefault();

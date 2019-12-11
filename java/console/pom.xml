@@ -2,9 +2,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>dk.commentor.starterproject.console</groupId>
-  <artifactId>logger-console-app</artifactId>
+  <artifactId>console-app</artifactId>
+  <description>Console Starter Project</description>
   <version>1.0.0</version>
   <packaging>jar</packaging>
+  <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.4.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -20,7 +27,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
         <executions>
           <execution>
             <goals>
